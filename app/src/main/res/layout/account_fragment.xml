@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F2F2">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:paddingTop="13dp"
+            android:padding="15dp"
+            android:textColor="@color/textcolor"
+            android:text="Account Information"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/profile_info"
+            android:background="#fff"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="15dp"
+            android:textColor="@color/textcolor"
+            android:text="Profile Info"
+            ></TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#B6B5B5" />
+
+        <TextView
+            android:id="@+id/term_condition"
+        android:background="#fff"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="15dp"
+        android:text="Terms &amp; Conditions"
+        android:textColor="@color/textcolor"
+        ></TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#B6B5B5" />
+<!--        <TextView-->
+<!--            android:id="@+id/help"-->
+<!--            android:background="#fff"-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20sp"-->
+<!--            android:padding="15dp"-->
+
+<!--            android:textColor="@color/textcolor"-->
+<!--            android:text="Help"-->
+<!--            ></TextView>-->
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="#B6B5B5" />-->
+        <Button
+            android:id="@+id/accout_logout"
+            android:layout_marginTop="15dp"
+            android:background="#fff"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:padding="15dp"
+            android:textAllCaps="false"
+            android:textColor="@color/textcolor"
+            android:text="Logout"
+            ></Button>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#B6B5B5" />
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/profie_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name"
+        ></TextView>
+</RelativeLayout>

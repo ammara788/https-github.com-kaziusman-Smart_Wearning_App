@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/itemcard"
+    app:cardElevation="0dp"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F6F5F5">
+        <ImageView
+            android:id="@+id/item_pic"
+            android:layout_width="159dp"
+            android:layout_height="159dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:id="@+id/item_title"
+            android:textSize="16sp"
+            android:layout_marginLeft="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="2dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:text="Rs:"
+            android:textColor="#000000"
+            android:textSize="14sp"
+           />
+            <TextView
+
+                android:textColor="#000000"
+                android:id="@+id/item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                ></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
