@@ -16,6 +16,7 @@
             android:label="@string/title_activity_shop__main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Shop_SignUpActivity" />
+        <activity android:name=".Admin_Panel.Admin_Main" />
         <activity android:name=".User_SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Splash_screen">

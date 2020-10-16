@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.start_app_slider.Admin_Panel.Admin_Main;
 import com.example.start_app_slider.Shop_Account.Shop_Main;
 
 public class LoginActivity extends AppCompatActivity {
     TextView customer_login,shop_login;
+    EditText username,pass;
     String select;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,12 @@ public class LoginActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_login);
+        username = findViewById(R.id.edt_username);
+        pass = findViewById(R.id.edt_password);
         customer_login = findViewById(R.id.customer_login);
         shop_login = findViewById(R.id.shop_login);
+
+
         select="customer";
         customer_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
 
                 }
+
             }
         });
         findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
@@ -62,16 +70,32 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(select.equals("customer"))
                 {
-                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(i);
+                    if(username.getText().toString().equals("admin") & pass.getText().toString().equals("admin"))
+                    {
+                        Intent i = new Intent(LoginActivity.this, Admin_Main.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }
+
 
                 }
                 else if(select.equals("shop"))
                 {
-                    Intent i = new Intent(LoginActivity.this, Shop_Main.class);
-                    startActivity(i);
+                    if(username.getText().toString().equals("admin") & pass.getText().toString().equals("admin"))
+                    {
+                        Intent i = new Intent(LoginActivity.this, Admin_Main.class);
+                        startActivity(i);
+                    }
+                    else{
+                        Intent i = new Intent(LoginActivity.this, Shop_Main.class);
+                        startActivity(i);
+                    }
 
                 }
+
             }
         });
     }
