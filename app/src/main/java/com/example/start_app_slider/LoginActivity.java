@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.signup_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(select.equals("customer"))
         {
             Intent i = new Intent(LoginActivity.this,User_SignUpActivity.class);
@@ -68,6 +69,15 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(username.getText().toString().equals("admin") & pass.getText().toString().equals("admin"))
+                {
+                    Intent i = new Intent(LoginActivity.this, Admin_Main.class);
+                    startActivity(i);
+                }
+                else{
+                    Intent i = new Intent(LoginActivity.this, Shop_Main.class);
+                    startActivity(i);
+                }
                 if(select.equals("customer"))
                 {
                     if(username.getText().toString().equals("admin") & pass.getText().toString().equals("admin"))

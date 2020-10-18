@@ -19,26 +19,34 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+
     <string-array name="citys">
-        <item>Rawalpindi</item>
+        <item>City</item>
+        <item>Islamabad</item>
         <item>Lahore</item>
-        <item>February</item>
-        <item>March</item>
-        <item>April</item>
-        <item>May</item>
-        <item>June</item>
-        <item>July</item>
-        <item>August</item>
-        <item>September</item>
-        <item>October</item>
-        <item>November</item>
-        <item>December</item>
+        <item>Rawalpindi</item>
+        <item>Peshawar</item>
+        <item>Quetta</item>
+        <item>Multan</item>
+        <item>Karachi</item>
     </string-array>
     <string-array name="category">
-        <item>Select</item>
-        <item>Name</item>
-        <item>City</item>
-        <item>Market Area</item>
+        <item>Top Trends</item>
+        <item>Best Sell</item>
+        <item>Summer</item>
+        <item>Winter</item>
+    </string-array>
+    <string-array name="type">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+    </string-array>
+    <string-array name="size">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+
+        <item>Karachi</item>
     </string-array>
     <string name="title_activity_shop__main">Shop_Main</string>
     <string name="tab_text_1">Tab 1</string>

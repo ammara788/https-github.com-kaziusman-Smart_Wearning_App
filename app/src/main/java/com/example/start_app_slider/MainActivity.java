@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.start_app_slider.Home.Home_Fragment;
 import com.example.start_app_slider.Shops.Shop_Fragment;
-import com.example.start_app_slider.Show_Items.Items_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

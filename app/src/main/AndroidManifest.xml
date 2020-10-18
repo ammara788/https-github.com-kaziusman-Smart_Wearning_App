@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Guest_Details"></activity>
+        <activity android:name=".First_Activity" />
         <activity
             android:name=".Shop_Account.Shop_Main"
             android:label="@string/title_activity_shop__main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Shop_SignUpActivity" />
         <activity android:name=".Admin_Panel.Admin_Main" />
         <activity android:name=".User_SignUpActivity" />

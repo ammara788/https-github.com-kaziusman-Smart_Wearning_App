@@ -92,7 +92,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void launchMain() {
         preferenceManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(MainScreen.this, LoginActivity.class));
+        startActivity(new Intent(MainScreen.this, First_Activity.class));
         finish();
     }
 

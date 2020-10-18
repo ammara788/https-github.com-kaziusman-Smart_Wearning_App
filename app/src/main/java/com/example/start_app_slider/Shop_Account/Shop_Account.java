@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.start_app_slider.First_Activity;
 import com.example.start_app_slider.LoginActivity;
 import com.example.start_app_slider.R;
 
@@ -34,7 +35,7 @@ public class Shop_Account extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
-                                          Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                          Intent intent = new Intent(getActivity(), First_Activity.class);
                                           startActivity(intent);
                                       }
                                   }

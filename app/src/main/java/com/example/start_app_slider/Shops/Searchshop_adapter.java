@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.start_app_slider.Home.Bestsell_items.bestsell_item_adapter;
-import com.example.start_app_slider.Home.Featured_items.featured_Item_Model_Class;
 import com.example.start_app_slider.R;
 import com.example.start_app_slider.Show_Items.Items_Fragment;
 

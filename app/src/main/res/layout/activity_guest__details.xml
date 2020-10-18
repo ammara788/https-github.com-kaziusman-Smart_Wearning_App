@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Guest Info"
+                android:textColor="#000"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                />
+
+
+            <!--logo-->
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_person_white_24dp"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/text_color"
+                android:textColorHint="#B6B5B5" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#B6B5B5" />
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#B6B5B5" />
+            <EditText
+                android:id="@+id/edt_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_location_city_24dp"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/text_color"
+                android:textColorHint="#B6B5B5"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#B6B5B5" />
+            <EditText
+                android:id="@+id/edt_contactNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_event_24"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Event"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/text_color"
+                android:textColorHint="#B6B5B5"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#B6B5B5" />
+            <EditText
+                android:id="@+id/edt_guest_season"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_season_4_24"
+                android:drawablePadding="12dp"
+                android:ems="10"
+                android:hint="Season"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/text_color"
+                android:textColorHint="#B6B5B5"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#B6B5B5" />
+
+
+            <!--            <CheckBox-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:buttonTint="@color/textcolor"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:text=" Remember me "-->
+            <!--                android:textColor="@color/textcolor" />-->
+
+            <Button
+                android:id="@+id/btn_guest_next"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:background="@drawable/bg_login_btn"
+                android:clickable="true"
+                android:padding="16dp"
+                android:textAllCaps="false"
+                android:text="Next"
+                android:textColor="#ffff"
+                android:textSize="18sp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

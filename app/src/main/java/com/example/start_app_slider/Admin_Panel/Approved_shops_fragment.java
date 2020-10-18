@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.start_app_slider.R;
-import com.example.start_app_slider.Shops.Shop_model;
 
 import java.util.ArrayList;
 import java.util.List;

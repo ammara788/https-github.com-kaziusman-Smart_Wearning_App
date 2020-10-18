@@ -12,11 +12,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.start_app_slider.Home.Featured_items.featured_Item_Model_Class;
-import com.example.start_app_slider.Home.Winter_items.winter_item_adapter;
 import com.example.start_app_slider.R;
-import com.example.start_app_slider.Shops.Searchshop_adapter;
-import com.example.start_app_slider.Shops.Shop_model;
 
 import java.util.ArrayList;
 import java.util.List;

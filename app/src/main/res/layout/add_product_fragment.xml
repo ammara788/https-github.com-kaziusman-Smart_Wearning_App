@@ -102,7 +102,7 @@
                         android:padding="3dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:entries="@array/category"
+                        android:entries="@array/type"
                         android:textAlignment="center"
                         android:scrollbarStyle="insideInset"
                         android:layout_height="40dp"/>
@@ -137,7 +137,7 @@
                         android:padding="3dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:entries="@array/category"
+                        android:entries="@array/size"
                         android:textAlignment="center"
                         android:scrollbarStyle="insideInset"
                         android:layout_height="40dp"/>

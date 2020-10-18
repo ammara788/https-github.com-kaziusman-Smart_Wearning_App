@@ -1,11 +1,8 @@
 package com.example.start_app_slider.Admin_Panel;
 
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.start_app_slider.LoginActivity;
 import com.example.start_app_slider.R;
-import com.example.start_app_slider.Shop_Account.ShowProducts.Shop_Product_adapter;
-import com.example.start_app_slider.Shop_Account.ShowProducts.Shop_product_model_class;
-import com.example.start_app_slider.Shops.Shop_model;
-import com.example.start_app_slider.Show_Items.Items_Fragment;
 
 import java.util.ArrayList;
 
