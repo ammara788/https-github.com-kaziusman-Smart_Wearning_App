@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <SearchView
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+
+        android:layout_height="40dp"
+        android:background="@drawable/ed_txt"
+        android:queryHint="Search"
+        ></SearchView>
+
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Approved Shops"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:background="@color/black"
+        android:gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/approved_lv_shops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>
