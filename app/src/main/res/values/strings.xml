@@ -46,6 +46,12 @@
         <item>Medium</item>
         <item>Large</item>
 
+    </string-array>
+    <string-array name="season">
+        <item>Summer</item>
+        <item>Winter</item>
+        <item>Autum</item>
+
         <item>Karachi</item>
     </string-array>
     <string name="title_activity_shop__main">Shop_Main</string>

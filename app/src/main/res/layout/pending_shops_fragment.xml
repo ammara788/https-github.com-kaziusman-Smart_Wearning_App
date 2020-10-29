@@ -6,17 +6,7 @@
 
 
 
-    <SearchView
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:padding="10dp"
-        android:layout_width="match_parent"
 
-        android:layout_height="40dp"
-        android:background="@drawable/ed_txt"
-        android:queryHint="Search"
-        ></SearchView>
 
 
 

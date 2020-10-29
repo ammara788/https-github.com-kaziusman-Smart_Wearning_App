@@ -6,15 +6,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.start_app_slider.Home.Bestsell_items.bestsell_item_adapter;
 import com.example.start_app_slider.Home.Category_items.Model_Class;
 import com.example.start_app_slider.Home.Category_items.UsersRecyclerAdapter;
@@ -23,48 +29,63 @@ import com.example.start_app_slider.Home.Featured_items.featured_Item_Model_Clas
 import com.example.start_app_slider.Home.Sumer_items.summer_item_adapter;
 import com.example.start_app_slider.Home.Winter_items.winter_item_adapter;
 import com.example.start_app_slider.R;
+import com.example.start_app_slider.Show_Items.Items_Fragment;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Home_Fragment extends Fragment {
+   SearchView searchview;
     ArrayList<featured_Item_Model_Class> itemarrayList;
     ArrayList<Model_Class> arrayList;
     //winteritem
     RecyclerView winter_item_recyclerView;
-    int winter_item_image[]={R.drawable.random2,R.drawable.random1,R.drawable.random4, R.drawable.random3};
+    List<String> winter_item_image=new ArrayList<>();
+//    int winter_item_image[]={R.drawable.random2,R.drawable.random1,R.drawable.random4, R.drawable.random3};
     List<String> winter_item_price=new ArrayList<String>();
-    String winter_item_desc[]={"Male", "Women", "Kids","Kids"};
+    List<String> winter_item_name=new ArrayList<String>();
+    List<String> winter_item_id=new ArrayList<String>();
 
 
     //
     //summeritem
     RecyclerView summer_item_recyclerView;
-    int summer_item_image[]={R.drawable.random1,R.drawable.random2, R.drawable.random3,R.drawable.random4};
+    List<String> summer_item_image=new ArrayList<>();
     List<String> summer_item_price=new ArrayList<String>();
-    String summer_item_desc[]={"Male", "Women", "Kids","Kids"};
+    List<String> summer_item_name=new ArrayList<String>();
+    List<String> summer_item_id=new ArrayList<String>();
 
     //
     //bestitem
     RecyclerView best_item_recyclerView;
-    int best_item_image[]={R.drawable.random1,R.drawable.random2, R.drawable.random3,R.drawable.random4};
+    List<String> best_item_image=new ArrayList<>();
+//    int best_item_image[]={R.drawable.random1,R.drawable.random2, R.drawable.random3,R.drawable.random4};
     List<String> best_item_price=new ArrayList<String>();
-    String best_item_desc[]={"Male", "Women", "Kids","Kids"};
+    List<String> best_item_name=new ArrayList<String>();
+    List<String> best_item_id=new ArrayList<String>();
+
     //
     //top_treds_items
     RecyclerView item_recyclerView;
-    int item_image[]={R.drawable.random1,R.drawable.random2, R.drawable.random3,R.drawable.random4};
+    List<String> item_image=new ArrayList<>();
+//    int item_image[]={R.drawable.random1,R.drawable.random2, R.drawable.random3,R.drawable.random4};
     List<String> item_price=new ArrayList<String>();
-    String item_desc[]={"Male", "Women", "Kids","Kids"};
+    List<String> item_name=new ArrayList<String>();
+    List<String> item_id=new ArrayList<String>();
+
     //
     //category_items
     RecyclerView recyclerView;
-    int icons[] = {R.drawable.men,R.drawable.women, R.drawable.kids,R.drawable.accessories};
-    String iconsName[] = {"Male", "Women", "Kids","Accessories"};
+
+    int icons[] = {R.drawable.men,R.drawable.women, R.drawable.kids};
+    String iconsName[] = {"Male", "Women", "Kids"};
     SliderView sliderView;
     private SliderAdapterExample adapter;
 
@@ -82,22 +103,37 @@ public class Home_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        item_price.add("123");
-        item_price.add("123");
-        item_price.add("123");
-        item_price.add("123");
-        best_item_price.add("123");
-        best_item_price.add("123");
-        best_item_price.add("123");
-        best_item_price.add("123");
-        summer_item_price.add("123");
-        summer_item_price.add("123");
-        summer_item_price.add("123");
-        summer_item_price.add("123");
-        winter_item_price.add("123");
-        winter_item_price.add("123");
-        winter_item_price.add("123");
-        winter_item_price.add("123");
+        item_recyclerView = (RecyclerView) view.findViewById(R.id.top_trends);
+        winter_item_recyclerView = (RecyclerView) view.findViewById(R.id.winter_sell);
+        summer_item_recyclerView = (RecyclerView) view.findViewById(R.id.summer_sell);
+        best_item_recyclerView = (RecyclerView) view.findViewById(R.id.best_sell);
+        searchview=view.findViewById(R.id.searchview);
+
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                AppCompatActivity activity = (AppCompatActivity) getContext();
+                Fragment myFragment = new Items_Fragment();
+                Bundle args = new Bundle();
+                args.putString("key","Found Items");
+                args.putString("id",query);
+                myFragment.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
+
+//                Toast.makeText(getContext(), query, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+
+
+
+
 
         // male, women, kids recyclerview
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewUsers);
@@ -117,18 +153,24 @@ public class Home_Fragment extends Fragment {
 
         UsersRecyclerAdapter uperadapter = new UsersRecyclerAdapter(getContext(), arrayList);
         recyclerView.setAdapter(uperadapter);
+        showbycategory("Top Trends");
+        showbycategory("Best Sell");
+        showbytype("Winter");
+        showbytype("Summer");
+
+
 /////////////////////////////////////////////////
         //winter items
-        winteritem(view);
+//        winteritem(view);
 ///////////////////////////////////////////////////////
         //summer Items
-       summeritems(view);
+//       summeritems(view);
 ////////////////////////////////////////////
         // featured items recyclerview
-        featureditems(view);
-/////////////////////////////////////////////////////
+//        featureditems(view);
+///////////////////////////////////////////////////////
         //bestsetll item adapter
-        bestsellitems(view);
+//        bestsellitems(view);
 
 
 
@@ -200,21 +242,21 @@ public class Home_Fragment extends Fragment {
 //        adapter.addItem(sliderItem);
 //
 //    }
-////////////////////////////////////////////////////
-    public void winteritem(View view)
+//////////////////////////////////////////////////
+    public void winteritem()
     {
-        winter_item_recyclerView = (RecyclerView) view.findViewById(R.id.winter_sell);
+
         itemarrayList = new ArrayList<>();
 
         winter_item_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         winter_item_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i <  winter_item_image.length; i++) {
+        for (int i = 0; i <  winter_item_image.size(); i++) {
             featured_Item_Model_Class itemModel = new featured_Item_Model_Class();
-            itemModel.setImage( winter_item_image[i]);
+            itemModel.setImageUrl( winter_item_image.get(i));
             itemModel.setPrice( winter_item_price.get(i));
-            itemModel.setDesc( winter_item_desc[i]);
-
+            itemModel.setName( winter_item_name.get(i));
+            itemModel.setId(winter_item_id.get(i));
             //add in array list
             itemarrayList.add(itemModel);
         }
@@ -222,20 +264,20 @@ public class Home_Fragment extends Fragment {
         winter_item_adapter winteritemuperadapter = new winter_item_adapter(getContext(), itemarrayList);
         winter_item_recyclerView.setAdapter(winteritemuperadapter);
     }
-    public void summeritems(View view)
+    public void summeritems()
     {
-        summer_item_recyclerView = (RecyclerView) view.findViewById(R.id.summer_sell);
+
         itemarrayList = new ArrayList<>();
 
         summer_item_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         summer_item_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i < summer_item_image.length; i++) {
+        for (int i = 0; i < summer_item_image.size(); i++) {
             featured_Item_Model_Class itemModel = new featured_Item_Model_Class();
-            itemModel.setImage(summer_item_image[i]);
+            itemModel.setImageUrl(summer_item_image.get(i));
             itemModel.setPrice(summer_item_price.get(i));
-            itemModel.setDesc(summer_item_desc[i]);
-
+            itemModel.setName(summer_item_name.get(i));
+            itemModel.setId(summer_item_id.get(i));
             //add in array list
             itemarrayList.add(itemModel);
         }
@@ -243,19 +285,20 @@ public class Home_Fragment extends Fragment {
         summer_item_adapter summeritemuperadapter = new summer_item_adapter(getContext(), itemarrayList);
         summer_item_recyclerView.setAdapter(summeritemuperadapter);
     }
-    public void bestsellitems(View view)
+    public void bestsellitems()
     {
-        best_item_recyclerView = (RecyclerView) view.findViewById(R.id.best_sell);
+
         itemarrayList = new ArrayList<>();
 
         best_item_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         best_item_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i < item_image.length; i++) {
+        for (int i = 0; i < best_item_image.size(); i++) {
             featured_Item_Model_Class itemModel = new featured_Item_Model_Class();
-            itemModel.setImage(best_item_image[i]);
+            itemModel.setImageUrl(best_item_image.get(i));
             itemModel.setPrice(best_item_price.get(i));
-            itemModel.setDesc(best_item_desc[i]);
+            itemModel.setName(best_item_name.get(i));
+            itemModel.setId(best_item_id.get(i));
 
             //add in array list
             itemarrayList.add(itemModel);
@@ -265,19 +308,20 @@ public class Home_Fragment extends Fragment {
         best_item_recyclerView.setAdapter(bestitemuperadapter);
 
     }
-    public void featureditems(View view)
+    public void featureditems()
     {
-        item_recyclerView = (RecyclerView) view.findViewById(R.id.top_trends);
+
         itemarrayList = new ArrayList<>();
 
         item_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         item_recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i < item_image.length; i++) {
+        for (int i = 0; i < item_image.size(); i++) {
             featured_Item_Model_Class itemModel = new featured_Item_Model_Class();
-            itemModel.setImage(item_image[i]);
+            itemModel.setImageUrl(item_image.get(i));
             itemModel.setPrice(item_price.get(i));
-            itemModel.setDesc(item_desc[i]);
+            itemModel.setName(item_name.get(i));
+            itemModel.setId(item_id.get(i));
 
             //add in array list
             itemarrayList.add(itemModel);
@@ -285,6 +329,111 @@ public class Home_Fragment extends Fragment {
 
         featured_Item_Adapter itemuperadapter = new featured_Item_Adapter(getContext(), itemarrayList);
         item_recyclerView.setAdapter(itemuperadapter);
+    }
+
+    public void showbycategory(final String category)
+    {
+        AndroidNetworking.post("https://jashabhsoft.com/myapi/productsbycategory.php")
+                .addBodyParameter("category", category)
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                        try {
+                            if(category.equals("Top Trends"))
+                            {
+                                item_image.clear();
+                                for (int i = 0; i < response.getJSONArray("list").length(); i++)
+                                {
+                                    item_image.add("https://jashabhsoft.com/myapi/uploads/items/"+response.getJSONArray("list").getJSONObject(i).getString("image_location"));
+                                    item_price.add(response.getJSONArray("list").getJSONObject(i).getString("price"));
+                                    item_name.add(response.getJSONArray("list").getJSONObject(i).getString("name"));
+                                    item_id.add( response.getJSONArray("list").getJSONObject(i).getString("id"));
+
+                                }
+                                featureditems();
+                            }
+                            else if(category.equals("Best Sell"))
+                            {
+                                best_item_image.clear();
+                                for (int i = 0; i < response.getJSONArray("list").length(); i++)
+                                {
+                                    best_item_image.add("https://jashabhsoft.com/myapi/uploads/items/"+response.getJSONArray("list").getJSONObject(i).getString("image_location"));
+                                    best_item_price.add(response.getJSONArray("list").getJSONObject(i).getString("price"));
+                                    best_item_name.add(response.getJSONArray("list").getJSONObject(i).getString("name"));
+                                    best_item_id.add( response.getJSONArray("list").getJSONObject(i).getString("id"));
+
+                                }
+                                bestsellitems();
+                            }
+
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
+    }
+    public void showbytype(final String season)
+    {
+        AndroidNetworking.post("https://jashabhsoft.com/myapi/seasonproducts.php")
+                .addBodyParameter("season", season)
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                        try {
+                            if(season.equals("Winter"))
+                            {
+                                winter_item_image.clear();
+                                for (int i = 0; i < response.getJSONArray("list").length(); i++)
+                                {
+                                    winter_item_image.add("https://jashabhsoft.com/myapi/uploads/items/"+response.getJSONArray("list").getJSONObject(i).getString("image_location"));
+                                    winter_item_price.add(response.getJSONArray("list").getJSONObject(i).getString("price"));
+                                    winter_item_name.add(response.getJSONArray("list").getJSONObject(i).getString("name"));
+                                    winter_item_id.add( response.getJSONArray("list").getJSONObject(i).getString("id"));
+
+                                }
+                                winteritem();
+                            }
+                            else if(season.equals("Summer"))
+                            {
+                                summer_item_image.clear();
+                                for (int i = 0; i < response.getJSONArray("list").length(); i++)
+                                {
+                                    summer_item_image.add("https://jashabhsoft.com/myapi/uploads/items/"+response.getJSONArray("list").getJSONObject(i).getString("image_location"));
+                                    summer_item_price.add(response.getJSONArray("list").getJSONObject(i).getString("price"));
+                                    summer_item_name.add(response.getJSONArray("list").getJSONObject(i).getString("name"));
+                                    summer_item_id.add( response.getJSONArray("list").getJSONObject(i).getString("id"));
+
+                                }
+                                summeritems();
+                            }
+
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
     }
 
 }

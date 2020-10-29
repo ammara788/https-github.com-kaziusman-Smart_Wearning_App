@@ -13,6 +13,7 @@
     <color name="colorWhite">#fff</color>
     <color name="black">#000</color>
     <color name="red">#BB0404</color>
+    <color name="transparent">#07000000</color>
 
     <array name="dot_on_page_active">
         <item>#F8F8F8</item>

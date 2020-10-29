@@ -3,6 +3,7 @@ package com.example.start_app_slider;
 import android.os.Bundle;
 
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +15,14 @@ import com.example.start_app_slider.Shops.Shop_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
+    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Fragment docmain = new Home_Fragment();
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
@@ -30,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 // Commit the transaction
         transaction.commit();
-
+        b=getIntent().getExtras();
+//        Toast.makeText(this, b.getString("key"), Toast.LENGTH_SHORT).show();
 
         BottomNavigationView bottomNavigationView= (BottomNavigationView) findViewById(R.id.bottom_nav_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.id.home:
                         Fragment docmain = new Home_Fragment();
+
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.shop:
                         Fragment docmain1 = new Shop_Fragment();
+
                         FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
@@ -70,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.profile:
                         Fragment docmain2 = new Account_Fragment();
                         FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                        Bundle bundle2=new Bundle();
+                        bundle2.putString("id",  b.getString("id"));
 
+                        docmain2.setArguments(bundle2);
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack
                         transaction2.replace(R.id.container, docmain2, "account");

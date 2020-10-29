@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.start_app_slider.Home.Show_Item_fragment;
 import com.example.start_app_slider.R;
 import com.example.start_app_slider.Show_Items.Items_Fragment;
@@ -39,8 +40,13 @@ public class featured_Item_Adapter extends RecyclerView.Adapter<featured_Item_Ad
     @Override
     public void onBindViewHolder(featured_Item_Adapter.viewHolder viewHolder, int position) {
         viewHolder.price.setText(arrayList.get(position).getPrice());
-        viewHolder.desc.setText(arrayList.get(position).getDesc());
-        viewHolder.image.setImageResource(arrayList.get(position).getImage());
+        viewHolder.name.setText(arrayList.get(position).getName());
+        viewHolder.item_id.setText(arrayList.get(position).getId());
+        Glide.with(viewHolder.image)
+                .load(arrayList.get(position).getImageUrl())
+                .fitCenter()
+                .into(viewHolder.image);
+//        viewHolder.image.setImageResource(arrayList.get(position).getImage());
 
     }
 
@@ -51,16 +57,16 @@ public class featured_Item_Adapter extends RecyclerView.Adapter<featured_Item_Ad
 
     public class viewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView price;
-        TextView desc;
+        TextView price,item_id;
+        TextView name;
         CardView itemcard;
 
         public viewHolder(View itemView) {
             super(itemView);
-
+            item_id= itemView.findViewById(R.id.item_id);
             image = itemView.findViewById(R.id.item_pic);
             price = itemView.findViewById(R.id.item_price);
-            desc = itemView.findViewById(R.id.item_title);
+            name = itemView.findViewById(R.id.item_title);
             itemcard= itemView.findViewById(R.id.itemcard);
             itemcard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -69,8 +75,8 @@ public class featured_Item_Adapter extends RecyclerView.Adapter<featured_Item_Ad
                     AppCompatActivity activity = (AppCompatActivity) v.getContext();
                     Fragment myFragment = new Show_Item_fragment();
                     Bundle args = new Bundle();
-                    args.putString("price",price.getText().toString());
-                    args.putString("name",desc.getText().toString());
+                    args.putString("id",item_id.getText().toString());
+//                    args.putString("name",name.getText().toString());
                     myFragment.setArguments(args);
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 

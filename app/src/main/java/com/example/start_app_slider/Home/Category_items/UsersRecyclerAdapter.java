@@ -64,7 +64,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
                         AppCompatActivity activity = (AppCompatActivity) v.getContext();
                         Fragment myFragment = new Items_Fragment();
                         Bundle args = new Bundle();
-                        args.putString("key","male");
+                        args.putString("key","Men");
                         myFragment.setArguments(args);
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 
@@ -75,7 +75,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
                         AppCompatActivity activity = (AppCompatActivity) v.getContext();
                         Fragment myFragment = new Items_Fragment();
                         Bundle args = new Bundle();
-                        args.putString("key","female");
+                        args.putString("key","Women");
                         myFragment.setArguments(args);
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 
@@ -86,7 +86,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
                         AppCompatActivity activity = (AppCompatActivity) v.getContext();
                         Fragment myFragment = new Items_Fragment();
                         Bundle args = new Bundle();
-                        args.putString("key","kids");
+                        args.putString("key","Kids");
                         myFragment.setArguments(args);
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 

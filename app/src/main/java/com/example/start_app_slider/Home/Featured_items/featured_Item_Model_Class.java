@@ -1,19 +1,31 @@
 package com.example.start_app_slider.Home.Featured_items;
 
 public class featured_Item_Model_Class {
-    int image;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    String imageUrl;
     String price;
-    String desc;
+    String name;
 
-
-
-    public int getImage() {
-        return image;
+    public String getId() {
+        return id;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setId(String id) {
+        this.id = id;
     }
+
+    String id;
+
+
+
+
 
     public String getPrice() {
         return price;
@@ -23,11 +35,11 @@ public class featured_Item_Model_Class {
         this.price = price;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getName() {
+        return name;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setName(String name) {
+        this.name = name;
     }
 }

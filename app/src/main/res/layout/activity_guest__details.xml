@@ -47,7 +47,7 @@
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Age"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textColor="@color/text_color"
@@ -64,66 +64,90 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#B6B5B5" />
-            <EditText
-                android:id="@+id/edt_city"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_location_city_24dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="City"
-                android:inputType="text"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="#B6B5B5"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_location_city_24dp"
+                    android:layout_gravity="center"></ImageView>
+                <Spinner
 
-                />
+                    android:id="@+id/edt_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:entries="@array/citys"
+                    android:scrollbarStyle="insideInset"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+
+                    />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#B6B5B5" />
-            <EditText
-                android:id="@+id/edt_contactNo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_event_24"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Event"
-                android:inputType="number"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="#B6B5B5"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_event_24"
+                    android:layout_gravity="center"></ImageView>
+                <Spinner
 
-                />
+                    android:id="@+id/spinner_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:entries="@array/citys"
+                    android:scrollbarStyle="insideInset"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+
+                    />
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#B6B5B5" />
-            <EditText
-                android:id="@+id/edt_guest_season"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_season_4_24"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Season"
-                android:inputType="number"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="#B6B5B5"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_season_4_24"
+                    android:layout_gravity="center"></ImageView>
+                <Spinner
 
-                />
+                    android:id="@+id/edt_spinner_season"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:entries="@array/citys"
+                    android:scrollbarStyle="insideInset"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+
+                    />
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

@@ -18,6 +18,8 @@ import com.example.start_app_slider.Home.Show_Item_fragment;
 public class Account_Fragment extends Fragment {
     Button logout;
     TextView profile,term;
+
+    String id;
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -25,15 +27,23 @@ public class Account_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        id=getArguments().getString("id");
+
         return inflater.inflate(R.layout.account_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         profile=view.findViewById(R.id.profile_info);
         term=view.findViewById(R.id.term_condition);
         logout=view.findViewById(R.id.accout_logout);
+        if(id.equals("guest"))
+        {
+            profile.setText("Login/Signup");
+        }
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,14 +55,20 @@ public class Account_Fragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment myFragment = new User_Profile_Fragment();
-//                Bundle args = new Bundle();
-//                args.putString("price",price.getText().toString());
-//                args.putString("name",desc.getText().toString());
-//                myFragment.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
+                if(profile.getText().toString().equals("Login/Signup"))
+                {
+                    Intent intent = new Intent(getActivity(), User_SignUpActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new User_Profile_Fragment();
+                    Bundle args = new Bundle();
+                    args.putString("id", id);
 
+                    myFragment.setArguments(args);
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
+                }
 
             }
         });

@@ -36,7 +36,7 @@
                     <EditText
                         android:editable="false"
 
-                        android:id="@+id/et_username"
+                        android:id="@+id/shop_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#FFF"
@@ -53,7 +53,7 @@
 
 
                     <EditText
-                        android:id="@+id/et_password"
+                        android:id="@+id/shop_et_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#FFF"
@@ -145,7 +145,7 @@
 
                     <EditText
                         android:gravity="top|left"
-                        android:id="@+id/Description"
+                        android:id="@+id/shop_Description"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:backgroundTint="#FFF"
@@ -154,8 +154,16 @@
 
                     </EditText>
                 </androidx.cardview.widget.CardView>
+                  <ImageView
+                      android:id="@+id/shop_edit_img"
+                      android:layout_marginTop="10dp"
+                      android:layout_width="120dp"
+                      android:layout_height="120dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/select_image"></ImageView>
 
-                <Button
+
+                  <Button
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:id="@+id/edit_profile"

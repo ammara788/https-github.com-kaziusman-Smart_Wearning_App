@@ -18,8 +18,9 @@ public class Guest_Details extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Guest_Details.this, MainActivity.class);
+                i.putExtra("id","guest");
 
-                        startActivity(i);
+                startActivity(i);
             }
         });
 

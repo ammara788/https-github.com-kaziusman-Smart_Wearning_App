@@ -1,10 +1,33 @@
 package com.example.start_app_slider.Admin_Panel;
 
 public class admin_model {
-    String address;
-    String Category;
-    String name;
+    String id;
 
+    String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    String contact;
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    String address;
+    String email;
+    String name;
+    String imageUrl;
+    String satus;
     public String getSatus() {
         return satus;
     }
@@ -13,8 +36,21 @@ public class admin_model {
         this.satus = satus;
     }
 
-    String satus;
-    int image;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 
     public String getAddress() {
         return address;
@@ -24,12 +60,12 @@ public class admin_model {
         this.address = address;
     }
 
-    public String getCategory() {
-        return Category;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCategory(String category) {
-        Category = category;
+    public void setEmail(String category) {
+        email = category;
     }
 
     public String getName() {
@@ -40,11 +76,4 @@ public class admin_model {
         this.name = name;
     }
 
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
 }

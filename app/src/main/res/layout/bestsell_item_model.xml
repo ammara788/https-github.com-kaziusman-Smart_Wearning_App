@@ -51,7 +51,13 @@
                     android:textSize="14sp"
                     ></TextView>
             </LinearLayout>
+            <TextView
+                android:textColor="#fff"
+                android:id="@+id/b_item_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                ></TextView>
 
 
         </LinearLayout>

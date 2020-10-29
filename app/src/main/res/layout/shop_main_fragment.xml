@@ -20,6 +20,7 @@
         android:orientation="horizontal"
         android:weightSum="3">
         <Spinner
+            android:id="@+id/shop_search_spinner"
             android:layout_marginLeft="10dp"
             android:background="@drawable/ed_txt"
             android:padding="3dp"
@@ -30,6 +31,7 @@
             android:scrollbarStyle="insideInset"
             android:layout_height="40dp"/>
         <SearchView
+            android:id="@+id/search_view"
             android:layout_marginRight="10dp"
             android:padding="10dp"
             android:layout_width="0dp"
