@@ -158,7 +158,7 @@ public class All_Shops_Fragment extends Fragment {
             itemModel.setSatus( shop_satus.get(i));
             itemModel.setId( shop_id.get(i));
             itemModel.setContact( shop_contact.get(i));
-            itemModel.setContact( shop_city.get(i));
+            itemModel.setCity( shop_city.get(i));
             //add in array list
             itemarrayList.add(itemModel);
         }

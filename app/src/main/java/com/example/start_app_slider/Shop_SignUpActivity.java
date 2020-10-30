@@ -246,7 +246,7 @@ public class Shop_SignUpActivity extends AppCompatActivity {
                 .addMultipartParameter("password",edt_shop_password.getText().toString())
                 .addMultipartParameter("address",edt_location.getText().toString())
                 .addMultipartParameter("city",slectedvalue)
-                .addMultipartParameter("contact",edt_location.getText().toString())
+                .addMultipartParameter("contact",edt_contactNo.getText().toString())
                 .addMultipartParameter("description",edt_desc.getText().toString())
                 //.setTag("uploadTest")
                 .setPriority(Priority.HIGH)
