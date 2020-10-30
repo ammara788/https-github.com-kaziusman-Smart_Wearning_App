@@ -32,6 +32,7 @@ public class User_Profile_Fragment extends Fragment {
     String id;
     RadioButton male,female;
     Button edit_profile;
+    String gender;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,19 @@ public class User_Profile_Fragment extends Fragment {
         prgroup=view.findViewById(R.id.prgroup);
         male= (RadioButton) view.findViewById(R.id.r_male);
         female = (RadioButton) view.findViewById(R.id.r_female);
+        prgroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                if(checkedId == R.id.r_male) {
+                    gender ="male";
+                } else if(checkedId == R.id.r_female) {
+                    gender="female";
+                }
+            }
+
+        });
 
 
 
@@ -65,6 +78,7 @@ public class User_Profile_Fragment extends Fragment {
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 updateprofile();
             }
         });
@@ -86,6 +100,7 @@ public class User_Profile_Fragment extends Fragment {
             }
         });
     }
+
     public void filldata()
     {
         AndroidNetworking.post("https://jashabhsoft.com/myapi/userdetailsbyid.php")
@@ -100,7 +115,7 @@ public class User_Profile_Fragment extends Fragment {
                         Toast.makeText(getContext(), ""+response, Toast.LENGTH_SHORT).show();
                         try {
                             profile_email.setText(response.getJSONObject("userdetails").getString("email"));
-                            profile_password.setText(response.getJSONObject("userdetails").getString("name"));
+                            profile_password.setText(response.getJSONObject("userdetails").getString("password"));
                             pr_name.setText(response.getJSONObject("userdetails").getString("name"));
                             pr_city.setText(response.getJSONObject("userdetails").getString("city"));
                             pr_contact.setText(response.getJSONObject("userdetails").getString("contact"));
@@ -108,11 +123,13 @@ public class User_Profile_Fragment extends Fragment {
                             {
                                 Toast.makeText(getContext(), "male", Toast.LENGTH_SHORT).show();
                                 male.setChecked(true);
+                                gender ="male";
                             }
                             else if((response.getJSONObject("userdetails").getString("gender").equals("female")))
                             {
                                 Toast.makeText(getContext(), "femail", Toast.LENGTH_SHORT).show();
                                 female.setChecked(true);
+                                gender="female";
                             }
 //                            prgroup.setText();
                         } catch (JSONException e) {
@@ -128,7 +145,27 @@ public class User_Profile_Fragment extends Fragment {
     }
     public void updateprofile()
     {
-
+        AndroidNetworking.post("https://jashabhsoft.com/myapi/updateuser.php")
+                .addBodyParameter("email", profile_email.getText().toString())
+                .addBodyParameter("name", pr_name.getText().toString())
+                .addBodyParameter("password", profile_password.getText().toString())
+                .addBodyParameter("gender", gender)
+                .addBodyParameter("city", pr_city.getText().toString())
+                .addBodyParameter("contact", pr_contact.getText().toString())
+                .addBodyParameter("id", id)
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getContext(), ""+response, Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
     }
 
 

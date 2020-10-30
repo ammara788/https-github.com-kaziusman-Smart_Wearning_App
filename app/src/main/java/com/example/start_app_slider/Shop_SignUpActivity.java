@@ -133,9 +133,6 @@ public class Shop_SignUpActivity extends AppCompatActivity {
         } else if (u_spinner.equals("City")){
             ((TextView)edt_city.getSelectedView()).setError("Select a City");
 
-        }else if (filePath.equals("")){
-            Toast.makeText(this, "Select an image", Toast.LENGTH_SHORT).show();
-
         }
         else{
             imageUpload(filetoupload);
@@ -151,8 +148,8 @@ public class Shop_SignUpActivity extends AppCompatActivity {
                     Bitmap imageBitmap = (Bitmap) extras.get("data");
                     shop_img.setImageBitmap(imageBitmap);
                     Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
-                    filePath=getRealPathFromURI(tempUri);
-                    filetoupload=new File(filePath);
+                    String path=getRealPathFromURI(tempUri);
+                    filetoupload=new File(path);
 
 //                    uploadBitmap(imageBitmap);
 //                    uploadFile("" + getRealPathFromURI(tempUri));

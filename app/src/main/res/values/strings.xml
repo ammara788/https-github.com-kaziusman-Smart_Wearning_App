@@ -33,8 +33,7 @@
     <string-array name="category">
         <item>Top Trends</item>
         <item>Best Sell</item>
-        <item>Summer</item>
-        <item>Winter</item>
+
     </string-array>
     <string-array name="type">
         <item>Men</item>
@@ -50,9 +49,7 @@
     <string-array name="season">
         <item>Summer</item>
         <item>Winter</item>
-        <item>Autum</item>
 
-        <item>Karachi</item>
     </string-array>
     <string name="title_activity_shop__main">Shop_Main</string>
     <string name="tab_text_1">Tab 1</string>

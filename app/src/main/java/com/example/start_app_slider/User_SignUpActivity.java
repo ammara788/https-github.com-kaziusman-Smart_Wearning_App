@@ -153,6 +153,10 @@ public class User_SignUpActivity extends AppCompatActivity {
                                 Intent intent = new Intent(User_SignUpActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
+                            else if(response.getString("error").equals("true"))
+                            {
+                                Toast.makeText(User_SignUpActivity.this, "Email Already Registered", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
