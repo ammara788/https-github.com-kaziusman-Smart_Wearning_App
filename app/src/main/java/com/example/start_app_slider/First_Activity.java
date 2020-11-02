@@ -19,7 +19,7 @@ public class First_Activity extends AppCompatActivity {
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(First_Activity.this, MainActivity.class);
+                Intent i = new Intent(First_Activity.this, Guest_Details.class);
                 i.putExtra("id","guest");
 
                 startActivity(i);

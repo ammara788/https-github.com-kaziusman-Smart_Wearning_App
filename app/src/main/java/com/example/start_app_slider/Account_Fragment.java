@@ -77,10 +77,10 @@ public class Account_Fragment extends Fragment {
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new Terms_conditions_fragment();
-//                Bundle args = new Bundle();
-//                args.putString("price",price.getText().toString());
-//                args.putString("name",desc.getText().toString());
-//                myFragment.setArguments(args);
+                Bundle args = new Bundle();
+                args.putString("id", id);
+
+                myFragment.setArguments(args);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 
             }

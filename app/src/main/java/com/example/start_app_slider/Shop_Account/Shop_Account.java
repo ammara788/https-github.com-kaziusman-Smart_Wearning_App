@@ -124,7 +124,6 @@ public class Shop_Account extends Fragment {
                             et_City.setText(response.getJSONObject("shopdetails").getString("city"));
                             et_Contact.setText(response.getJSONObject("shopdetails").getString("contact"));
                             shop_Description.setText(response.getJSONObject("shopdetails").getString("description"));
-                            Toast.makeText(getContext(), "https://jashabhsoft.com/myapi/uploads/shops/"+response.getJSONObject("shopdetails").getString("image_location"), Toast.LENGTH_SHORT).show();
                             Glide.with(getContext())
                             .load("https://jashabhsoft.com/myapi/uploads/shops/"+response.getJSONObject("shopdetails").getString("image_location"))
                                     .into(shop_img);

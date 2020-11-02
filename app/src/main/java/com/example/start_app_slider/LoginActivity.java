@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email,pass;
     String select;
     int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 0;
+    public static String selectedval="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +116,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else{
                        calluserapi();
-                        Toast.makeText(LoginActivity.this, "callapi", Toast.LENGTH_SHORT).show();
 //                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
 //                        startActivity(i);
                     }
@@ -152,12 +152,11 @@ public class LoginActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(LoginActivity.this, ""+response, Toast.LENGTH_SHORT).show();
                         try {
 
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             i.putExtra("id",response.getJSONObject("user").getString("id"));
-
+selectedval="user";
                             startActivity(i);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -199,7 +198,9 @@ public class LoginActivity extends AppCompatActivity {
 //                            i.putExtra("city",response.getJSONObject("user").getString("city"));
 //                            i.putExtra("gender",response.getJSONObject("user").getString("gender"));
 //                            i.putExtra("contact",response.getJSONObject("user").getString("contact"));
+                                selectedval="user";
                                 startActivity(i);
+
                             }
 
                         } catch (JSONException e) {

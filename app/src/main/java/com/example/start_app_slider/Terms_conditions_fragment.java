@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 public class Terms_conditions_fragment extends Fragment {
     ImageView back;
+    String id;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class Terms_conditions_fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        id=getArguments().getString("id");
         return inflater.inflate(R.layout.terms_and_conditions, container, false);
     }
 
@@ -34,6 +36,10 @@ public class Terms_conditions_fragment extends Fragment {
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new Account_Fragment();
+                Bundle bundle2=new Bundle();
+                bundle2.putString("id", id);
+
+                myFragment.setArguments(bundle2);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
 
             }

@@ -1,16 +1,23 @@
 package com.example.start_app_slider.Home;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -21,6 +28,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.start_app_slider.Guest_Details;
 import com.example.start_app_slider.Home.Bestsell_items.bestsell_item_adapter;
 import com.example.start_app_slider.Home.Category_items.Model_Class;
 import com.example.start_app_slider.Home.Category_items.UsersRecyclerAdapter;
@@ -28,8 +36,11 @@ import com.example.start_app_slider.Home.Featured_items.featured_Item_Adapter;
 import com.example.start_app_slider.Home.Featured_items.featured_Item_Model_Class;
 import com.example.start_app_slider.Home.Sumer_items.summer_item_adapter;
 import com.example.start_app_slider.Home.Winter_items.winter_item_adapter;
+import com.example.start_app_slider.LoginActivity;
 import com.example.start_app_slider.R;
 import com.example.start_app_slider.Show_Items.Items_Fragment;
+
+import com.example.start_app_slider.notifications.notification;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -42,6 +53,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home_Fragment extends Fragment {
+    TextView tv_noti;
+    ImageView noti;
+    TextView toptrends,bestsell,winter,summer;
    SearchView searchview;
     ArrayList<featured_Item_Model_Class> itemarrayList;
     ArrayList<Model_Class> arrayList;
@@ -99,6 +113,70 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
+//    public static int[] removeTheElement(int[] arr,
+//                                         int index)
+//    {
+//
+//        // If the array is empty
+//        // or the index is not in array range
+//        // return the original array
+//        if (arr == null
+//                || index < 0
+//                || index >= arr.length) {
+//
+//            return arr;
+//        }
+//
+//        // Create another array of size one less
+//        int[] anotherArray = new int[arr.length - 1];
+//
+//        // Copy the elements except the index
+//        // from original array to the other array
+//        for (int i = 0, k = 0; i < arr.length; i++) {
+//
+//            // if the index is
+//            // the removal element index
+//            if (i == index) {
+//                continue;
+//            }
+//
+//            // if the index is not
+//            // the removal element index
+//            anotherArray[k++] = arr[i];
+//        }
+//
+//        // return the resultant array
+//        return anotherArray;
+//    }
+    // To stop the job
+
+    public void checknotification()
+    {
+        AndroidNetworking.post("https://jashabhsoft.com/myapi/notifications.php")
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            if( response.getJSONArray("notifications").length()>0)
+                            {
+                                noti.setImageResource(R.drawable.ic_notification_on);
+                                tv_noti.setText(Integer.toString(response.getJSONArray("notifications").length()));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -107,8 +185,24 @@ public class Home_Fragment extends Fragment {
         winter_item_recyclerView = (RecyclerView) view.findViewById(R.id.winter_sell);
         summer_item_recyclerView = (RecyclerView) view.findViewById(R.id.summer_sell);
         best_item_recyclerView = (RecyclerView) view.findViewById(R.id.best_sell);
+        toptrends=view.findViewById(R.id.tv_toptrends);
+        bestsell=view.findViewById(R.id.tv_bestsell);
+        winter=view.findViewById(R.id.tv_winter);
+        summer=view.findViewById(R.id.tv_summer);
         searchview=view.findViewById(R.id.searchview);
+        noti=view.findViewById(R.id.notification);
+        tv_noti=view.findViewById(R.id.tv_noti);
+        checknotification();
 
+        noti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) getContext();
+                Fragment myFragment = new notification();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, myFragment).addToBackStack(null).commit();
+
+            }
+        });
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -130,7 +224,7 @@ public class Home_Fragment extends Fragment {
             }
         });
 
-
+//        icons=removeTheElement(icons, 2);
 
 
 
@@ -153,11 +247,37 @@ public class Home_Fragment extends Fragment {
 
         UsersRecyclerAdapter uperadapter = new UsersRecyclerAdapter(getContext(), arrayList);
         recyclerView.setAdapter(uperadapter);
-        showbycategory("Top Trends");
-        showbycategory("Best Sell");
-        showbytype("Winter");
-        showbytype("Summer");
 
+        if(Guest_Details.selected_season.equals("Winter"))
+        {
+            showbytype("Winter");
+            summer.setVisibility(View.GONE);
+        }
+        else if(Guest_Details.selected_season.equals("Summer"))
+        {
+            showbytype("Summer");
+            winter.setVisibility(View.GONE);
+        }
+        if(Guest_Details.selected_type.equals("Top Trends"))
+        {
+            showbycategory("Top Trends");
+            bestsell.setVisibility(View.GONE);
+        }
+        else if(Guest_Details.selected_type.equals("Best Sell"))
+        {
+            showbycategory("Best Sell");
+            toptrends.setVisibility(View.GONE);
+        }
+        if(LoginActivity.selectedval.equals("user")) {
+            toptrends.setVisibility(View.VISIBLE);
+            bestsell.setVisibility(View.VISIBLE);
+            winter.setVisibility(View.VISIBLE);
+            summer.setVisibility(View.VISIBLE);
+            showbycategory("Top Trends");
+            showbycategory("Best Sell");
+            showbytype("Winter");
+            showbytype("Summer");
+        }
 
 /////////////////////////////////////////////////
         //winter items

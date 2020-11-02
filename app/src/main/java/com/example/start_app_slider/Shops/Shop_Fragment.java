@@ -67,7 +67,14 @@ public class Shop_Fragment extends Fragment {
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                serachbynameaftercity(selectedvalue,query );
+                if(selectedvalue.equals("City"))
+                {
+                    Toast.makeText(getContext(), "Select a City to search", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    serachbynameaftercity(selectedvalue,query );
+
+                }
 //                Toast.makeText(getContext(), query, Toast.LENGTH_SHORT).show();
                 return false;
             }

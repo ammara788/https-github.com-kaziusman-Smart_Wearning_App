@@ -69,7 +69,7 @@ public class Show_Products extends Fragment {
 
         for (int i = 0; i < shop_item_image.size(); i++) {
             Shop_product_model_class itemModel = new Shop_product_model_class();
-            itemModel.setImageUrl( shop_item_image.get(i));
+            itemModel.setImageUrl(shop_item_image.get(i));
             itemModel.setPrice(shop_item_price.get(i));
             itemModel.setName( shop_item_name.get(i));
             itemModel.setId( shop_item_id.get(i));
@@ -94,18 +94,11 @@ public class Show_Products extends Fragment {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        shop_item_image.clear();
-                        shop_item_category.clear();
-                        shop_item_price.clear();
-                        shop_item_id.clear();
-                        shop_item_category.clear();
-                        shop_item_type.clear();
-                        shop_item_season.clear();
                         try {
+
                             for (int i = 0; i < response.getJSONArray("allitems").length(); i++)
                             {
                                 shop_item_image.add("https://jashabhsoft.com/myapi/uploads/items/"+response.getJSONArray("allitems").getJSONObject(i).getString("image_location"));
-
                                 shop_item_price.add(response.getJSONArray("allitems").getJSONObject(i).getString("price"));
 
                                 shop_item_name.add(response.getJSONArray("allitems").getJSONObject(i).getString("name"));
@@ -117,6 +110,13 @@ public class Show_Products extends Fragment {
                             }
 
                             showshoplist();
+                            shop_item_image.clear();
+                            shop_item_category.clear();
+                            shop_item_price.clear();
+                            shop_item_id.clear();
+                            shop_item_category.clear();
+                            shop_item_type.clear();
+                            shop_item_season.clear();
                         }
                         catch (JSONException e) {
                             e.printStackTrace();

@@ -4,15 +4,51 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+
+        >
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+
     android:text="Exlplore"
     android:textSize="30sp"
-    android:layout_margin="10dp"
     android:textStyle="bold"
     android:textColor="@color/textcolor"
     ></TextView>
+        <TextView
+            android:id="@+id/tv_noti"
+
+            android:textStyle="bold"
+            android:textColor="#4C9C7C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingBottom="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+
+        </TextView>
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_marginEnd="18dp"
+         android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_baseline_notifications_active_24">
+
+        </ImageView>
+    </RelativeLayout>
     <SearchView
         android:id="@+id/searchview"
         android:layout_marginLeft="16dp"
@@ -94,6 +130,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <TextView
+                android:id="@+id/tv_toptrends"
                 android:textStyle="bold"
 
 
@@ -102,15 +139,15 @@
                 android:text="Top Trends"
                 android:textSize="25sp"
                 android:textColor="#575454"></TextView>
-            <TextView
-                android:id="@+id/featured_see_all"
-                android:textColor="#575454"
-                android:layout_gravity="center"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="see all"
-                android:textSize="15sp"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/featured_see_all"-->
+<!--                android:textColor="#575454"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="right"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="see all"-->
+<!--                android:textSize="15sp"></TextView>-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -129,21 +166,22 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <TextView
+                android:id="@+id/tv_bestsell"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Best Sell"
                 android:textSize="25sp"
                 android:textColor="#575454"></TextView>
-            <TextView
-                android:id="@+id/bestsell_see_all"
-                android:textColor="#575454"
-                android:layout_gravity="center"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="see all"
-                android:textSize="15sp"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/bestsell_see_all"-->
+<!--                android:textColor="#575454"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="right"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="see all"-->
+<!--                android:textSize="15sp"></TextView>-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -162,21 +200,22 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <TextView
+                android:id="@+id/tv_winter"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Winters"
                 android:textSize="25sp"
                 android:textColor="#575454"></TextView>
-            <TextView
-                android:id="@+id/winter_see_all"
-                android:textColor="#575454"
-                android:layout_gravity="center"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="see all"
-                android:textSize="15sp"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/winter_see_all"-->
+<!--                android:textColor="#575454"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="right"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="see all"-->
+<!--                android:textSize="15sp"></TextView>-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -196,21 +235,22 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <TextView
+                android:id="@+id/tv_summer"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Summers"
                 android:textSize="25sp"
                 android:textColor="#575454"></TextView>
-            <TextView
-                android:id="@+id/summer_see_all"
-                android:textColor="#575454"
-                android:layout_gravity="center"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="see all"
-                android:textSize="15sp"></TextView>
+<!--            <TextView-->
+<!--                android:id="@+id/summer_see_all"-->
+<!--                android:textColor="#575454"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="right"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="see all"-->
+<!--                android:textSize="15sp"></TextView>-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
